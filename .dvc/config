@@ -1,0 +1,4 @@
+[core]
+    remote = tgdeploy
+['remote "tgdeploy"']
+    url = s3://tgdeploy
