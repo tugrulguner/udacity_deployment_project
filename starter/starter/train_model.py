@@ -32,6 +32,6 @@ X_test, y_test, _, _ = process_data(
     test, categorical_features=cat_features, label='salary',
     training=False, encoder=encoder, lb=lb)
 
-model = train_model(X_Train, y_train)
+model = train_model(X_train, y_train)
 
 joblib.dump(model, '../model/RF_Regressor.pkl')
