@@ -35,7 +35,7 @@ def test_inference_1():
   }
 
   uploading_data = json.dumps(uploading_data).encode('utf8')
-  data_response = requests.post('http://127.0.0.1:8000/inference', uploading_data)
+  data_response = requests.post('http://127.0.0.1:8000/inference', data=uploading_data)
   assert data_response.json() != '<50k$' or data_response.json() != '>50k$'
 
 @test_app.post('/inference_check_2')
@@ -58,5 +58,5 @@ def test_inference_2():
   }
 
   uploading_data = json.dumps(uploading_data).encode('utf8')
-  data_response = requests.post('http://127.0.0.1:8000/inference', uploading_data)
+  data_response = requests.post('http://127.0.0.1:8000/inference', data=uploading_data)
   assert data_response.json()
