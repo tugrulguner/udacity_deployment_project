@@ -7,7 +7,7 @@ from ml.data import process_data
 from ml.model import train_model, compute_model_metrics, inference
 
 @pytest.fixture
-def input_data():
+async def input_data():
 
   data = pd.read_csv(os.getcwd()+'/starter/data/cleaned_data.csv')
   
