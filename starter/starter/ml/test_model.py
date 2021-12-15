@@ -1,6 +1,7 @@
 import pytest
 import os
 import pandas as pd
+import joblib
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
 from ml.model import train_model, compute_model_metrics, inference
@@ -53,7 +54,7 @@ def test_compute_model_metrics(input_data):
 
 def test_inference(input_data):
   
-  model = train_model(input_data[0], input_data[1])
+  model = joblib.load('../../data/RF_Classifier.pkl')
 
   inference_test = inference(model, input_data[2])
 

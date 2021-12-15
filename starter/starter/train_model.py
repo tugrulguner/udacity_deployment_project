@@ -34,4 +34,4 @@ X_test, y_test, _, _ = process_data(
 
 model = train_model(X_train, y_train)
 
-joblib.dump(model, '../model/RF_Regressor.pkl')
+joblib.dump(model, '../model/RF_Classifier.pkl')
