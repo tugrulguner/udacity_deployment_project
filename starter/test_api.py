@@ -19,19 +19,19 @@ def test_welcome():
 def test_inference_1():
   uploading_data = {
     "age": 35,
-    "workclass": 'Private',
+    "workclass": "Private",
     "fnlgt": 45780,
-    "education": 'Bachelors',
-    "education-num": 13,
-    "marital-status": 'Never-married',
-    "occupation": 'Prof-specialty',
-    "relationship": 'Not-in-family',
-    "race": 'Black',
-    "sex": 'Female',
-    "capital-gain": 3000,
-    "capital-loss": 500,
-    "hours-per-week": 40,
-    "native-country": 'Jamaica'
+    "education": "Bachelors",
+    "education_num": 13,
+    "marital_status": "Never-married",
+    "occupation": "Prof-specialty",
+    "relationship": "Not-in-family",
+    "race": "Black",
+    "sex": "Female",
+    "capital_gain": 3000,
+    "capital_loss": 500,
+    "hours_per_week": 40,
+    "native_country": "Jamaica"
   }
 
   uploading_data = json.dumps(uploading_data).encode('utf8')
@@ -42,19 +42,19 @@ def test_inference_1():
 def test_inference_2():
   uploading_data = {
     "age": 35,
-    "workclass": 'Private',
+    "workclass": "Private",
     "fnlgt": 45780,
-    "education": 'Bachelors',
-    "education-num": 13,
-    "marital-status": 'Never-married',
-    "occupation": 'Prof-specialty',
-    "relationship": 'Not-in-family',
-    "race": 'Black',
-    "sex": 'Female',
-    "capital-gain": 3000,
-    "capital-loss": 500,
-    "hours-per-week": 40,
-    "native-country": 'Jamaica'
+    "education": "Bachelors",
+    "education_num": 13,
+    "marital_status": "Never-married",
+    "occupation": "Prof-specialty",
+    "relationship": "Not-in-family",
+    "race": "Black",
+    "sex": "Female",
+    "capital_gain": 3000,
+    "capital_loss": 500,
+    "hours_per_week": 40,
+    "native_country": "Jamaica"
   }
 
   uploading_data = json.dumps(uploading_data).encode('utf8')

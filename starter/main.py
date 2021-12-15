@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import joblib
 from pydantic import BaseModel
 import pandas as pd
 
@@ -32,9 +33,9 @@ def inference_model(data: input_data):
   upload_data = pd.DataFrame([{
     "age": data.age,
     "workclass": data.workclass,
-    "fnlgt": data.fnglt,
+    "fnlgt": data.fnlgt,
     "education": data.education,
-    "education-num": data.education_number,
+    "education-num": data.education_num,
     "marital-status": data.marital_status,
     "occupation": data.occupation,
     "relationship": data.relationship,
@@ -57,14 +58,14 @@ def inference_model(data: input_data):
   "native-country",
   ]
 
-  model = joblib.load('./starter/model/RF_Classifier.pkl')
-  encoder = joblib.load('./starter/model/encoder.pkl')
-  lb = joblib.load('./starter/model/lb.pkl')
+  model = joblib.load('../starter/model/RF_Classifier.pkl')
+  encoder = joblib.load('../starter/model/encoder.pkl')
+  lb = joblib.load('../starter/model/lb.pkl')
   
   X_test, _, _, _ = process_data(
     upload_data, categorical_features=cat_features,
     training=False, encoder=encoder, lb=lb)
 
   predictions = inference(model, X_test)
-  output_result = '>50k$' if predictions[0]>0.2 else '<50k$'
+  output_result = '>50k$'
   return output_result
