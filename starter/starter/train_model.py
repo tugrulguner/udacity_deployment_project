@@ -1,16 +1,16 @@
 # Script to train machine learning model.
 
 import joblib
+import os
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
 from ml.model import train_model
 import pandas as pd
 
-from starter.starter.ml.model import train_model
 
 # Add the necessary imports for the starter code.
 
-data = pd.read_csv('./data/cleaned_data.csv')
+data = pd.read_csv('../data/cleaned_data.csv')
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 train, test = train_test_split(data, test_size=0.20)
