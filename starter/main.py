@@ -53,11 +53,11 @@ class input_data(BaseModel):
         }
     }
 
-@app.get('salary-predictor-tg.herokuapp.com')
+@app.get('/')
 def welcome():
   return "Welcome to our first prediction model deployment app"
 
-@app.post('salary-predictor-tg.herokuapp.com/inference')
+@app.post('/inference')
 def inference_model(data: input_data):
   upload_data = pd.DataFrame([{
     "age": data.age,
