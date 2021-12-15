@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 from ml.data import process_data
 from ml.model import train_model, compute_model_metrics, inference
 
-@pytest.fixture
-async def input_data():
+@pytest.fixture(scope='session')
+def input_data():
 
   data = pd.read_csv(os.getcwd()+'/starter/data/cleaned_data.csv')
   
