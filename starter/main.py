@@ -27,7 +27,7 @@ class input_data(BaseModel):
 def welcome():
   return "Welcome to our first prediction model deployment app"
 
-@app.post('/inference/')
+@app.post('/inference')
 def inference_model(data: input_data):
   upload_data = pd.DataFrame([{
     "age": data.age,

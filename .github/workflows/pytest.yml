@@ -30,15 +30,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest pandas sklearn fastapi requests
-          
-      - name: go to correcponding folder
-        run: cd starter/data/
          
       - name: DVC setup
         uses: iterative/setup-dvc@v1
       
       - name: When to run DVC
         run: dvc pull -r tgdeploy
+
+      - name: Run fastapi
+        run: uvicorn main:app
       
       - name: Run tests with pytest
         run: pytest 
