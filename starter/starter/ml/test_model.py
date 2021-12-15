@@ -24,10 +24,10 @@ def input_data():
     "native-country",
   ]
   X_train, y_train, encoder, lb = process_data(
-    train.iloc[:1000,:], categorical_features=cat_features, label="salary", training=True
+    train, categorical_features=cat_features, label="salary", training=True
   )
   X_test, y_test, encoder, lb = process_data(
-    test.iloc[:200,:], categorical_features=cat_features, label="salary", training=False,
+    test, categorical_features=cat_features, label="salary", training=False,
     encoder=encoder, lb=lb
   )
   return [X_train, y_train, X_test, y_test]
@@ -54,7 +54,7 @@ def test_compute_model_metrics(input_data):
 
 def test_inference(input_data):
   
-  model = joblib.load('../../data/RF_Classifier.pkl')
+  model = joblib.load(os.getcwd()+'/starter/model/RF_Classifier.pkl')
 
   inference_test = inference(model, input_data[2])
 
