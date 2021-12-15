@@ -36,9 +36,6 @@ jobs:
       
       - name: When to run DVC
         run: dvc pull -r tgdeploy
-
-      - name: Run fastapi
-        run: uvicorn ./starter/main:app
       
       - name: Run tests with pytest
         run: pytest 
