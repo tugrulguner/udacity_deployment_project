@@ -66,5 +66,5 @@ def inference_model(data: input_data):
     training=False, encoder=encoder, lb=lb)
 
   predictions = inference(model, X_test)
-
-  print('>50k$') if predictions[0]>0.2 else print('<50k$')
+  output_result = '>50k$' if predictions[0]>0.2 else '<50k$'
+  return output_result
