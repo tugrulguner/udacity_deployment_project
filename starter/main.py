@@ -57,4 +57,14 @@ def inference_model(data: input_data):
   "native-country",
   ]
 
+  model = joblib.load('./starter/model/RF_Classifier.pkl')
+  encoder = joblib.load('./starter/model/encoder.pkl')
+  lb = joblib.load('./starter/model/lb.pkl')
   
+  X_test, _, _, _ = process_data(
+    upload_data, categorical_features=cat_features,
+    training=False, encoder=encoder, lb=lb)
+
+  predictions = inference(model, X_test)
+
+  print('>50k$') if predictions[0]>0.2 else print('<50k$')
