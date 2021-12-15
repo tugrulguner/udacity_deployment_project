@@ -38,4 +38,4 @@ jobs:
         run: dvc pull -r tgdeploy
       
       - name: Run tests with pytest
-        run: pytest 
+        run: pytest /starter/starter/ml/test_model.py
