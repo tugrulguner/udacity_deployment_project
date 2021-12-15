@@ -53,11 +53,11 @@ class input_data(BaseModel):
         }
     }
 
-@app.get('/')
+@app.get('salary-predictor-tg.herokuapp.com')
 def welcome():
   return "Welcome to our first prediction model deployment app"
 
-@app.post('/inference')
+@app.post('salary-predictor-tg.herokuapp.com/inference')
 def inference_model(data: input_data):
   upload_data = pd.DataFrame([{
     "age": data.age,
@@ -96,5 +96,5 @@ def inference_model(data: input_data):
     training=False, encoder=encoder, lb=lb)
 
   predictions = inference(model, X_test)
-  output_result = '>50k$'
+  output_result = '>50k$' if predictions[0]>0.2 else '<50k$'
   return output_result
