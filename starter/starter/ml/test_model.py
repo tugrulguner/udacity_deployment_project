@@ -7,7 +7,7 @@ from ml.model import train_model, compute_model_metrics, inference
 @pytest.fixture
 def input_data():
 
-  data = pd.read_csv('../data/cleaned_data.csv')
+  data = pd.read_csv('../../data/cleaned_data.csv')
   
   train, test = train_test_split(data, test_size=0.20)
   
