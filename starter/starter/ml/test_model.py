@@ -24,11 +24,12 @@ def input_data():
         "native-country",
     ]
     X_train, y_train, encoder, lb = process_data(
-        train, categorical_features=cat_features, label="salary", training=True
+        train, categorical_features=cat_features, label="salary", 
+        training=True
     )
     X_test, y_test, encoder, lb = process_data(
-        test, categorical_features=cat_features, label="salary", training=False,
-        encoder=encoder, lb=lb
+        test, categorical_features=cat_features, label="salary", 
+        training=False, encoder=encoder, lb=lb
     )
     return [X_train, y_train, X_test, y_test]
 
