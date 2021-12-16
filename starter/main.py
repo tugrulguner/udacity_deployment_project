@@ -5,8 +5,8 @@ import joblib
 from pydantic import BaseModel
 import pandas as pd
 
-from starter.ml.data import process_data
-from starter.ml.model import inference
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import inference
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
