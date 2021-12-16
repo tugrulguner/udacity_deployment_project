@@ -20,7 +20,7 @@ uploading_data = {
 
 uploading_data = json.dumps(uploading_data).encode('utf8')
 
-response = requests.post('http://127.0.0.1:8000/inference', uploading_data)
+response = requests.post('https://salary-predictor-tg.herokuapp.com/inference', uploading_data)
 
 print(f'Status code: {response.status_code}')
 print(f'Salary Prediction of a given data: {response.json()}')
