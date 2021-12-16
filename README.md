@@ -60,17 +60,17 @@ uploading_data = {
 ```
 
 ### json encoding
-
+```
 uploading_data = json.dumps(uploading_data).encode('utf8')
-
+```
 ### Sending post request to corresponding url-end with correct data
-
+```
 response = requests.post(
     'https://salary-predictor-tg.herokuapp.com/inference', 
     uploading_data)
-
+```
 ### Then you can print the prediction result
-
+```
 print(f'Salary Prediction of a given data: {response.json()}')
-
+```
 ### OR you can just simply use live_post.py python script in starter folder
