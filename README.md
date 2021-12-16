@@ -36,3 +36,40 @@ During the continous integration, GitHub checks flake8, pytest, and general CI, 
 to Heroku when any push to GitHub is made passes all of these.
 
 You can find the app: [Salary Predictor App](https://salary-predictor-tg.herokuapp.com/)
+
+You can send a post request to receive any prediction:
+
+# Example data - you can change the values
+
+uploading_data = {
+    "age": 35,
+    "workclass": "Private",
+    "fnlgt": 45780,
+    "education": "Bachelors",
+    "education_num": 13,
+    "marital_status": "Never-married",
+    "occupation": "Prof-specialty",
+    "relationship": "Not-in-family",
+    "race": "Black",
+    "sex": "Female",
+    "capital_gain": 3000,
+    "capital_loss": 500,
+    "hours_per_week": 40,
+    "native_country": "Jamaica"
+}
+
+# json encoding
+
+uploading_data = json.dumps(uploading_data).encode('utf8')
+
+# Sending post request to corresponding url-end with correct data
+
+response = requests.post(
+    'https://salary-predictor-tg.herokuapp.com/inference', 
+    uploading_data)
+
+# Then you can print the prediction result
+
+print(f'Salary Prediction of a given data: {response.json()}')
+
+# OR you can just simply use live_post.py python script in starter folder
