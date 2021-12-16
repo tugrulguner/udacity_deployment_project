@@ -1,45 +1,36 @@
-Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
+## This is a Salary Prediction App by Tugrul Guner
 
-# Environment Set up
-* Download and install conda if you don’t have it already.
-    * Use the supplied requirements file to create a new environment, or
-    * conda create -n [envname] "python=3.8" scikit-learn dvc pandas numpy pytest jupyter jupyterlab fastapi uvicorn -c conda-forge
-    * Install git either through conda (“conda install git”) or through your CLI, e.g. sudo apt-get git.
+Salary data is used from the publicly available Census Bureau data. 
+Raw and cleaned data can be found in starter/data folder. They are tracked by DVC.
 
-## Repositories
-* Create a directory for the project and initialize git and dvc.
-    * As you work on the code, continually commit changes. Generated models you want to keep must be committed to dvc.
-* Connect your local git repo to GitHub.
-* Setup GitHub Actions on your repo. You can use one of the pre-made GitHub Actions if at a minimum it runs pytest and flake8 on push and requires both to pass without error.
-    * Make sure you set up the GitHub Action to have the same version of Python as you used in development.
-* Set up a remote repository for dvc.
+Data cleaning is as simple as possibly be, where nan and empty spaces in the strings
+were just cleared. 
 
-# Data
-* Download census.csv and commit it to dvc.
-* This data is messy, try to open it in pandas and see what you get.
-* To clean it, use your favorite text editor to remove all spaces.
-* Commit this modified data to dvc (we often want to keep the raw data untouched but then can keep updating the cooked version).
+data.py in the starter/starter/ml/ contains the process_data function that uses
+one hot encoder and label binarizer from sklearn to encode given categorical features.
+You can find encoder and label binarizer models saved in starter/model folder as .pkl files
 
-# Model
-* Using the starter code, write a machine learning model that trains on the clean data and saves the model. Complete any function that has been started.
-* Write unit tests for at least 3 functions in the model code.
-* Write a function that outputs the performance of the model on slices of the data.
-    * Suggestion: for simplicity, the function can just output the performance on slices of just the categorical features.
-* Write a model card using the provided template.
+model.py in the starter/starter/ml contains three functions that we use for training, computing
+metrics and inference. Random Forest Classifier with n_estimators=20 (rest left as default) is trained
+over the processed data (using train_model.py in starter/starter/) by process_data where train and 
+test sets were separated with 0.2 using train_test_split by sklearn. You can find details about the 
+model and metrics in model_card. Random Forest Classifier model saved as RF_Classifier.pkl 
+into the starter/model folder.
 
-# API Creation
-*  Create a RESTful API using FastAPI this must implement:
-    * GET on the root giving a welcome message.
-    * POST that does model inference.
-    * Type hinting must be used.
-    * Use a Pydantic model to ingest the body from POST. This model should contain an example.
-   	 * Hint: the data has names with hyphens and Python does not allow those as variable names. Do not modify the column names in the csv and instead use the functionality of FastAPI/Pydantic/etc to deal with this.
-* Write 3 unit tests to test the API (one for the GET and two for POST, one that tests each prediction).
+Recall, precision, fbeta metrics were calculated over the test data and metrics.csv in the starter/stater folder 
+and model_card contains the metric results.
 
-# API Deployment
-* Create a free Heroku account (for the next steps you can either use the web GUI or download the Heroku CLI).
-* Create a new app and have it deployed from your GitHub repository.
-    * Enable automatic deployments that only deploy if your continuous integration passes.
-    * Hint: think about how paths will differ in your local environment vs. on Heroku.
-    * Hint: development in Python is fast! But how fast you can iterate slows down if you rely on your CI/CD to fail before fixing an issue. I like to run flake8 locally before I commit changes.
-* Write a script that uses the requests module to do one POST on your live API.
+To understand the bias in the model, model slicing method is applied to 'occupation' feature where metrics
+were calculated over all of its unique values. It is found that there are two values that need to be
+taken care of carefully in order to avoid from bias, which again details can be found model_card.
+You can check the data from slice_output.csv and slice_output.txt in starter/starter/ml folder.
+
+We are applying two pytest:
+   * To check all three functions in model.py (test_model.py)
+   * To check API for both GET and POST methods (test_api.py)
+
+FastAPI is used for the deployment and together with the Continous Deployment and Continous Integration
+(provided by Git Actions), this repo connected to Heroku with all of these options.
+
+During the continous integration, GitHub checks flake8, pytest, and general CI, which is then deployed
+to Heroku when any push to GitHub is made passes all of these.
