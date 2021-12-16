@@ -32,4 +32,4 @@ jobs:
           pip install pytest pandas sklearn fastapi requests uvicorn
           
       - name: Run tests with pytest
-        run: pytest -vv test_model.py
+        run: pytest -vv

@@ -1,6 +1,5 @@
 import pandas as pd
 import joblib
-import numpy as np
 from model import compute_model_metrics
 from data import process_data
 

@@ -16,7 +16,6 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
 
 app = FastAPI()
 
-
 class input_data(BaseModel):
     age: int
     workclass: str
@@ -57,14 +56,14 @@ class input_data(BaseModel):
 @app.on_event("startup")
 async def startup_event(): 
     global model, encoder, label_encoder
-    model = joblib.load('../starter/model/RF_Classifier.pkl')
-    encoder = joblib.load('../starter/model/encoder.pkl')
-    label_encoder = joblib.load('../starter/model/lb.pkl')
+    model = joblib.load("./model/RF_Classifier.pkl")
+    encoder = joblib.load("./model/encoder.pkl")
+    label_encoder= joblib.load("./model/lb.pkl")
 
 
 @app.get('/')
 def welcome():
-    return "Welcome to our first prediction model deployment app"
+    return {'message': "Welcome to our first prediction model deployment app"}
 
 
 @app.post('/inference')
