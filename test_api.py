@@ -30,8 +30,7 @@ with TestClient(app) as client:
         assert read_get.status_code == 200
         assert read_get.json() == {
             'message': "Welcome to our first prediction model deployment app"
-            }
-
+        }
 
     def test_inference_1():
 
@@ -39,7 +38,6 @@ with TestClient(app) as client:
             '/inference',
             data=uploading_data)
         assert data_response.json() != '<50k$' or data_response.json() != '>50k$'
-
 
     def test_inference_2():
 
