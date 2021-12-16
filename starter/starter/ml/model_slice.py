@@ -46,9 +46,7 @@ precision_l = pd.DataFrame(precision_l, columns=['Precision'])
 recall_l = pd.DataFrame(recall_l, columns=['Recall'])
 fbeta_l = pd.DataFrame(fbeta_l, columns=['fbeta'])
 metrics = pd.concat([u_val_l, precision_l, recall_l, fbeta_l], axis=1)
-print(metrics.head(5))
 metrics.to_csv('slice_output.txt', sep=' ', index=False)
-
 
 
 

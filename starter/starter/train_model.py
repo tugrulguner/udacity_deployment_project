@@ -3,7 +3,7 @@
 import joblib
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
-from ml.model import train_model
+from ml.model import train_model, compute_model_metrics
 import pandas as pd
 
 
@@ -34,6 +34,16 @@ X_test, y_test, _, _ = process_data(
 
 model = train_model(X_train, y_train)
 
-joblib.dump(model, '../model/RF_Classifier.pkl')
-joblib.dump(encoder, '../model/encoder.pkl')
-joblib.dump(lb, '../model/lb.pkl')
+# joblib.dump(model, '../model/RF_Classifier.pkl')
+# joblib.dump(encoder, '../model/encoder.pkl')
+# joblib.dump(lb, '../model/lb.pkl')
+
+predictions = model.predict(X_test)
+
+precision, recall, fbeta = compute_model_metrics(y_test, predictions)
+metrics = pd.DataFrame([{
+    'precision': precision,
+    'recall': recall, 
+    'fbeta':fbeta
+    }])
+metrics.to_csv('metrics.csv')

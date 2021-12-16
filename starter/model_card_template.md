@@ -22,12 +22,24 @@ Test data used for evaluation was the 0.2 of the dataset
 
 ## Metrics
 
-fbeta, recall, and precision metrics were calculated using ml.model.compute_model_metrics
-module. Aequitas verified that results are biased.
+fbeta = 0.66
+recall = 0.62
+precision = 0.72
+Corresponding report can be found in metric.csv in ml folder
+Data Slicing based on 'Occupation' showed that 'Armed-Forces'
+and 'Priv-house-serv' have precision, recall and fbeta scores 1.0.
+Check the data and you can find details of this report in
+starter/starter/ml/ folder under the name slice_output.txt and csv
 
 ## Ethical Considerations
 
-There is no ethical consideration
+Based on the race and gender, salaries can be estimated
+lower than expected, which may cause a lower level of bank loan,
+which can be seem as false. Other than that, salaries may be asked
+by people to kept private, here, this classification can reveal
+their salary by taking some if their information that can be 
+easily accessed, and therefore, may violate their request of
+privacy in their salaries.
 
 ## Caveats and Recommendations
 

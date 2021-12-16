@@ -100,6 +100,6 @@ def inference_model(data: input_data):
 
     predictions = inference(model, x_test)
 
-    # I set the prediction threshold as 0.2 to provide extra flexibility
-    output_result = '>50k$' if predictions[0] > 0.2 else '<50k$'
+    # Show the Classification results based on prediction
+    output_result = '>50k$' if predictions[0] == 1 else '<50k$'
     return output_result
