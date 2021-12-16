@@ -26,7 +26,8 @@ cat_features = [
     "native-country",
 ]
 X_train, y_train, encoder, lb = process_data(
-    train, categorical_features=cat_features, label="salary", training=True
+    train, categorical_features=cat_features, label="salary",
+    training=True
 )
 X_test, y_test, _, _ = process_data(
     test, categorical_features=cat_features, label='salary',
@@ -34,16 +35,16 @@ X_test, y_test, _, _ = process_data(
 
 model = train_model(X_train, y_train)
 
-# joblib.dump(model, '../model/RF_Classifier.pkl')
-# joblib.dump(encoder, '../model/encoder.pkl')
-# joblib.dump(lb, '../model/lb.pkl')
+joblib.dump(model, '../model/RF_Classifier.pkl')
+joblib.dump(encoder, '../model/encoder.pkl')
+joblib.dump(lb, '../model/lb.pkl')
 
 predictions = model.predict(X_test)
 
 precision, recall, fbeta = compute_model_metrics(y_test, predictions)
 metrics = pd.DataFrame([{
     'precision': precision,
-    'recall': recall, 
-    'fbeta':fbeta
-    }])
+    'recall': recall,
+    'fbeta': fbeta
+}])
 metrics.to_csv('metrics.csv')

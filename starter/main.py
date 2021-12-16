@@ -54,6 +54,13 @@ class input_data(BaseModel):
             }
         }
 
+@app.on_event("startup")
+async def startup_event(): 
+    global model, encoder, label_encoder
+    model = joblib.load('../starter/model/RF_Classifier.pkl')
+    encoder = joblib.load('../starter/model/encoder.pkl')
+    label_encoder = joblib.load('../starter/model/lb.pkl')
+
 
 @app.get('/')
 def welcome():
@@ -89,10 +96,6 @@ def inference_model(data: input_data):
         "sex",
         "native-country",
     ]
-
-    model = joblib.load('../starter/model/RF_Classifier.pkl')
-    encoder = joblib.load('../starter/model/encoder.pkl')
-    label_encoder = joblib.load('../starter/model/lb.pkl')
 
     x_test, _, _, _ = process_data(
         upload_data, categorical_features=cat_features,
