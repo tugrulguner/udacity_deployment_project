@@ -38,7 +38,7 @@ with TestClient(app) as client:
             '/inference',
             data=uploading_data)
         assert data_response.json() != '<50k$' or \
-        data_response.json() != '>50k$'
+            data_response.json() != '>50k$'
 
     def test_inference_2():
 
