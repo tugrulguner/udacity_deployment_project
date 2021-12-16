@@ -35,4 +35,4 @@ FastAPI is used for the deployment and together with the Continous Deployment an
 During the continous integration, GitHub checks flake8, pytest, and general CI, which is then deployed
 to Heroku when any push to GitHub is made passes all of these.
 
-You can find the app: ![Salary Predictor App][https://salary-predictor-tg.herokuapp.com/]
+You can find the app: ![https://salary-predictor-tg.herokuapp.com/][Salary Predictor App]
