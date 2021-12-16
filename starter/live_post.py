@@ -21,7 +21,7 @@ uploading_data = {
 uploading_data = json.dumps(uploading_data).encode('utf8')
 
 response = requests.post(
-    'https://salary-predictor-tg.herokuapp.com/inference', 
+    'https://salary-predictor-tg.herokuapp.com/inference',
     uploading_data)
 
 print(f'Status code: {response.status_code}')

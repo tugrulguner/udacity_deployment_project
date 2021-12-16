@@ -40,7 +40,7 @@ You can find the app: [Salary Predictor App](https://salary-predictor-tg.herokua
 You can send a post request to receive any prediction:
 
 ### Example data - you can change the values
-'''
+```
 uploading_data = {
     "age": 35,
     "workclass": "Private",
@@ -57,7 +57,7 @@ uploading_data = {
     "hours_per_week": 40,
     "native_country": "Jamaica"
 }
-'''
+```
 
 ### json encoding
 
