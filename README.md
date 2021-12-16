@@ -39,8 +39,8 @@ You can find the app: [Salary Predictor App](https://salary-predictor-tg.herokua
 
 You can send a post request to receive any prediction:
 
-# Example data - you can change the values
-
+### Example data - you can change the values
+'''
 uploading_data = {
     "age": 35,
     "workclass": "Private",
@@ -57,19 +57,20 @@ uploading_data = {
     "hours_per_week": 40,
     "native_country": "Jamaica"
 }
+'''
 
-# json encoding
+### json encoding
 
 uploading_data = json.dumps(uploading_data).encode('utf8')
 
-# Sending post request to corresponding url-end with correct data
+### Sending post request to corresponding url-end with correct data
 
 response = requests.post(
     'https://salary-predictor-tg.herokuapp.com/inference', 
     uploading_data)
 
-# Then you can print the prediction result
+### Then you can print the prediction result
 
 print(f'Salary Prediction of a given data: {response.json()}')
 
-# OR you can just simply use live_post.py python script in starter folder
+### OR you can just simply use live_post.py python script in starter folder
