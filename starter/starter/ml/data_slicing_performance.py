@@ -1,12 +1,11 @@
 import pandas as pd
 import joblib
-import numpy as np
 from sklearn.model_selection import train_test_split
 from data import process_data
 from aequitas.group import Group
-from aequitas.bias import Bias
-from aequitas.fairness import Fairness
-from aequitas.plotting import Plot
+# from aequitas.bias import Bias
+# from aequitas.fairness import Fairness
+# from aequitas.plotting import Plot
 
 
 data = pd.read_csv('../../data/cleaned_data.csv')

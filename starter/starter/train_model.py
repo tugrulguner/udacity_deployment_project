@@ -1,7 +1,6 @@
 # Script to train machine learning model.
 
 import joblib
-import os
 from sklearn.model_selection import train_test_split
 from ml.data import process_data
 from ml.model import train_model
