@@ -10,7 +10,7 @@ from ml.model import train_model, compute_model_metrics, inference
 @pytest.fixture(scope='session')
 def input_data():
 
-    data = pd.read_csv(os.get_cwd()+'../../data/cleaned_data.csv')
+    data = pd.read_csv(os.getcwd()+'../../data/cleaned_data.csv')
 
     train, test = train_test_split(data, test_size=0.20)
 
@@ -60,7 +60,7 @@ def test_compute_model_metrics(input_data):
 
 def test_inference(input_data):
 
-    model = joblib.load(os.get_cwd()+'../../model/RF_Classifier.pkl')
+    model = joblib.load(os.getcwd()+'../../model/RF_Classifier.pkl')
 
     inference_test = inference(model, input_data[2])
 
