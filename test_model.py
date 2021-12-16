@@ -4,7 +4,8 @@ import joblib
 import os
 from sklearn.model_selection import train_test_split
 from starter.starter.ml.data import process_data
-from starter.starter.ml.model import train_model, compute_model_metrics, inference
+from starter.starter.ml.model import train_model, \
+compute_model_metrics, inference
 
 
 @pytest.fixture(scope='session')
@@ -25,11 +26,11 @@ def input_data():
         "native-country",
     ]
     X_train, y_train, encoder, lb = process_data(
-        train, categorical_features=cat_features, label="salary", 
+        train, categorical_features=cat_features, label="salary",
         training=True
     )
     X_test, y_test, encoder, lb = process_data(
-        test, categorical_features=cat_features, label="salary", 
+        test, categorical_features=cat_features, label="salary",
         training=False, encoder=encoder, lb=lb
     )
     return [X_train, y_train, X_test, y_test]
