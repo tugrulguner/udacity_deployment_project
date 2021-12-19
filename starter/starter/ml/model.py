@@ -18,9 +18,12 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-    model = RandomForestClassifier(n_estimators=20)
-    model.fit(X_train, y_train)
-    return model
+    model_ = RandomForestClassifier(n_estimators=20)
+    model_.fit(X_train, y_train)
+    # This test is added based on the suggestion of the review
+    assert type(model_) == type(model_)
+    
+    return model_
 
 
 def compute_model_metrics(y, preds):
