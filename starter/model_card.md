@@ -4,7 +4,7 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 
 ## Model Details
 
-Random Forest Classifier from sklearn.ensemble.RandomForestClassifier was used
+Random Forest Classifier from sklearn.ensemble.RandomForestClassifier was used with
 n_estimators = 20, and rest left as default. 
 
 ## Intended Use
@@ -28,8 +28,8 @@ precision = 0.72
 Corresponding report can be found in metric.csv in ml folder
 Data Slicing based on 'Occupation' showed that 'Armed-Forces'
 and 'Priv-house-serv' have precision, recall and fbeta scores 1.0.
-Check the data and you can find details of this report in
-starter/starter/ml/ folder under the name slice_output.txt and csv
+Check the data and you can find details of this report here 
+under the name slice_output.txt and csv
 
 ## Ethical Considerations
 
