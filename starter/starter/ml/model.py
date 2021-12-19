@@ -22,7 +22,6 @@ def train_model(X_train, y_train):
     model_.fit(X_train, y_train)
     # This test is added based on the suggestion of the review
     assert type(model_) == type(model_)
-    
     return model_
 
 
