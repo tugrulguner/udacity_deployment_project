@@ -7,7 +7,7 @@ with TestClient(app) as client:
 
     global uploading_data
 
-    uploading_data = {
+    uploading_data1 = {
         "age": 35,
         "workclass": "Private",
         "fnlgt": 45780,
@@ -24,7 +24,25 @@ with TestClient(app) as client:
         "native_country": "Jamaica"
     }
 
-    uploading_data = json.dumps(uploading_data).encode('utf8')
+    uploading_data2 = {
+        "age": 52,
+        "workclass": "Self-emp-not-inc",
+        "fnlgt": 45780,
+        "education": "HS-grad",
+        "education_num": 9,
+        "marital_status": "Married-civ-spouse",
+        "occupation": "Exec-managerial",
+        "relationship": "Husband",
+        "race": "White",
+        "sex": "Male",
+        "capital_gain": 0,
+        "capital_loss": 0,
+        "hours_per_week": 45,
+        "native_country": "United-States"
+    }
+
+    uploading_data1 = json.dumps(uploading_data1).encode('utf8')
+    uploading_data2 = json.dumps(uploading_data2).encode('utf8')
 
     def test_root():
         read_get = client.get('/')
@@ -37,7 +55,7 @@ with TestClient(app) as client:
 
         data_response = client.post(
             '/inference',
-            data=uploading_data)
+            data=uploading_data1)
         assert data_response.status_code == 200
         assert data_response.json() == '<50k$'
 
@@ -45,6 +63,6 @@ with TestClient(app) as client:
 
         data_response = client.post(
             '/inference',
-            data=uploading_data)
+            data=uploading_data2)
         assert data_response.status_code == 200
-        assert data_response.json() != '>50k$'
+        assert data_response.json() == '>50k$'
