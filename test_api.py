@@ -38,8 +38,7 @@ with TestClient(app) as client:
             '/inference',
             data=uploading_data)
         assert data_response.status_code == 200
-        assert data_response.json() != '<50k$' or \
-            data_response.json() != '>50k$'
+        assert data_response.json() == '<50k$' 
 
     def test_inference_2():
 
@@ -47,4 +46,4 @@ with TestClient(app) as client:
             '/inference',
             data=uploading_data)
         assert data_response.status_code == 200
-        assert data_response.json()
+        assert data_response.json() != '>50k$'
